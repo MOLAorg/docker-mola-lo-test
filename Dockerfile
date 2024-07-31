@@ -15,8 +15,9 @@ RUN apt-get install -y \
 
 # for running MOLA LO tests from mcap files:
 RUN apt-get install -y \
-    ros-humble-rosbag2-storage-mcap \
-    ros-humble-mola-test-datasets
+    ros-humble-rosbag2-storage-mcap
+
+#ros-humble-mola-test-datasets => newer version from git
 
 RUN rosdep init && rosdep update
 
@@ -29,6 +30,7 @@ WORKDIR /ros_ws/src
 RUN git clone https://github.com/MOLAorg/mp2p_icp.git --recursive
 RUN git clone https://github.com/MOLAorg/mola.git --recursive
 RUN git clone https://github.com/MOLAorg/mola_lidar_odometry.git --recursive
+RUN git clone https://github.com/MOLAorg/mola_test_datasets.git
 
 # Build the packages
 WORKDIR /ros_ws
